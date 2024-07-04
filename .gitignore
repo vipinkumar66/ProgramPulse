@@ -1,5 +1,10 @@
-venv
+**venv**
 .env
+**__pycache__
+**main-static
+**static
 
 # ANY TEXT FILES
 **.txt
+
+**node_modules**
