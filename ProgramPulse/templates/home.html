@@ -5,9 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/tailwind-css.css' %}">
-    <title>Document</title>
+    <title>{% block title %} ProgramPulse-Home {% endblock %}</title>
 </head>
 <body>
-    <h1 class="text-3xl font-bold">HEY BUDDY</h1>
+    <!-- This include tag helps us to include another templates  -->
+    <div class="bg-gradient-to-br from-gray-800 to-gray-900">
+        {% include 'navbar.html' %}
+        <div class="flex flex-col justify-between items-center bg-gradient-to-br from-gray-800 to-gray-900 h-screen">
+            <div class="w-1/2  text-center items-center">
+                <h1 class="mt-16 text-6xl font-bold text-white">Unlock the Secrets of Coding With Us</h1>
+                <p class="text-lg text-gray-300 mt-6">Discover insightful articles and stay updated with the latest trends in programming and technology.</p>
+                <div class="flex space-x-2 mt-10 items-center justify-center">
+                    <button class="text-gray-300 bg-indigo-700 px-2 py-2 rounded-lg w-[20%]">Know More</button>
+                    <button class="flex space-x-4 text-gray-300 bg-gray-700 px-2 py-2 rounded-lg w-[30%] items-center justify-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 mr-4" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                        Quick Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-900 px-4 py-4">
+        <div class="w-[60%] ml-20 mt-10">
+            <h1 class="text-gray-200 text-4xl mb-4 font-bold">Our mission</h1>
+            <p class="text-md text-gray-400 font-semibold">At ProgramPulse, our mission is to share knowledge, foster discussions, and connect with fellow tech enthusiasts. We believe that by sharing our learnings and engaging in thoughtful conversations about new technologies, we can create a community where everyone learns and grows together. Join us on this exciting journey as we explore the ever-evolving world of tech, exchange ideas, and support each other in our learning endeavors.</p>
+        </div>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
