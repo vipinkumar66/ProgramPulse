@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tailwind-css.css' %}">
+    <title>{% block title %} ProgramPulse-Home {% endblock %}</title>
+</head>
+<body>
+    <!-- This include tag helps us to include another templates  -->
+    <div class="bg-gradient-to-br from-gray-800 to-gray-900 h-screen">
+        {% include 'navbar.html' %}
+        <div id="content" class="flex justify-center">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

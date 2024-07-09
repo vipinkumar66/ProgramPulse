@@ -7,32 +7,20 @@ User = get_user_model()
 
 class RegisterationForm(forms.ModelForm):
     #  all the from fields are set to true by default for the required
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700 active:border-indigo-700", "placeholder":"Enter password"}),
+                               label="Paasword")
 
     class Meta:
         model = User
-        fields = ["username", "email", "password", "confirm_password", "first_name", "last_name"]
+        fields = ["username", "email", "password"]
+        widgets = {
+            "username":forms.TextInput(attrs={"class":"flex w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700", "placeholder":"Enter your username"}),
+            "email":forms.TextInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700", "placeholder":"Enter your Email Id"}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["last_name"].required = False
-        self.fields["first_name"].required = True
         self.fields["email"].required = True
-        # for field_name, field in self.fields.items():
-            # print(f'{field_name}: required={field.required}')
-
-    def clean(self):
-        # There are two type of clean method, one is on the field and the one on form
-        # read the difference about them
-        cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        confirm_password = cleaned_data.get("confirm_password")
-        if (password and confirm_password) and (password == confirm_password):
-                print("we are validated")
-        else:
-            # such errors are non field errors so how they are displayed on the top of form in html read about that
-            raise ValidationError("the password and the confirm password did not matched")
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -43,3 +31,10 @@ class RegisterationForm(forms.ModelForm):
             user.save()
         return user
 
+class LoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class':'w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700'
+    }),label="Enter your email")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        "class":"w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700"
+    }), label="Enter your password")

@@ -1,14 +1,14 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
 {% block content %}
-<div class="flex h-[33rem] w-[80%] justify-between items-center text-center bg-gray-900 rounded-lg mt-10 p-2">
+<div class="flex flex-row-reverse h-[33rem] w-[80%] justify-between items-center text-center bg-gray-900 rounded-lg mt-10 p-2">
     <div class="flex flex-col justify-center bg-indigo-950 w-[50%] h-[100%] rounded-lg items-center">
         <div class="flex flex-col w-[60%] space-y-2">
-            <h1 class="text-4xl font-bold text-white">Join Our Community</h1>
-            <p class="text-gray-400 text-start italic font-semibold">We're excited to have you here. By joining our community, you'll gain access to exclusive content, insightful articles. Sign up now to start exploring.</p>
+            <h1 class="text-4xl font-bold text-white text-start mb-2">Log In to Your Account</h1>
+            <p class="text-gray-400 text-start italic font-semibold">Log in to access your account, continue reading your favorite blogs, and engage with our community. If you don't have an account yet, please register to join us</p>
         </div>
     </div>
     <div class="w-[50%] flex flex-col justify-center items-center space-y-4 h-[100%]">
-        <h1 class="text-4xl font-bold text-indigo-700">Get Started Now</h1>
+        <h1 class="text-4xl font-bold text-indigo-700">Welcome Back</h1>
         <form action="{% url 'register' %}" method="POST" class="flex flex-col space-y-2 justify-center items-center w-[60%]">
             {% csrf_token %}
             {% for field in form %}
@@ -24,10 +24,8 @@
             <p class="text-md italic text-gray-500 w-[90%] mb-10 ">{{field.help_text}}</p>
             {% endif %}
             {% endfor %}
-            <!-- {{form.as_p}} -->
-            <p class="text-sm font-semibold text-gray-400 mt-2 mb-2">Already have an account <a href="{%url 'login' %}" class="text-indigo-700 font-semibold">Login here</a></p>
-            <button type="submit" class="text-gray-300 bg-indigo-700 px-2 py-2 rounded-lg w-[35%]">Register</button>
-
+            <p class="text-sm font-semibold text-gray-400 mt-2 mb-2">Don't have an account <a href="{%url 'register' %}" class="text-indigo-700 font-semibold">Create here</a></p>
+            <button type="submit" class="text-gray-300 bg-indigo-700 px-2 py-2 rounded-lg w-[35%]">Login</button>
         </form>
     </div>
 
