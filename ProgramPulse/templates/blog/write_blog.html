@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex flex-col justify-center text-center items-center space-x-6">
+    <h1 class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-gray-400 text-5xl font-extrabold">Create a Captivating Article</h1>
+    <div>
+        <form action="{% url 'create_article' %}" method="post" class="flex flex-col space-y-2 justify-center items-center h-[100%] mb-10" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {% if form.non_field_errors %}
+                <div class="text-red-500 font-bold">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% for field in form %}
+                <div class="flex justify-start text-start items-center w-full">
+                    <p class="text-gray-400 items-start font-semibold">{{ field.label }}</p>
+                    {% if field.field.required %}
+                        <span class="text-lg text-red-300 font-extrabold items-end mr-4">*</span>
+                    {% endif %}
+                </div>
+                {{ field }}
+                <p class="text-gray-500 font-extrabold text-md">{{field.help_text}}</p>
+            {% endfor %}
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
