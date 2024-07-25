@@ -7,15 +7,15 @@ User = get_user_model()
 
 class RegisterationForm(forms.ModelForm):
     #  all the from fields are set to true by default for the required
-    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700 active:border-indigo-700", "placeholder":"Enter password"}),
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-200 text-gray-800 border border-gray-700 active:border-indigo-700", "placeholder":"Enter password"}),
                                label="Paasword")
 
     class Meta:
         model = User
         fields = ["username", "email", "password"]
         widgets = {
-            "username":forms.TextInput(attrs={"class":"flex w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700", "placeholder":"Enter your username"}),
-            "email":forms.TextInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700", "placeholder":"Enter your Email Id"}),
+            "username":forms.TextInput(attrs={"class":"flex w-[90%] px-2 py-2 rounded-lg bg-gray-200 text-gray-800 border border-gray-700", "placeholder":"Enter your username"}),
+            "email":forms.TextInput(attrs={"class":" w-[90%] px-2 py-2 rounded-lg bg-gray-200 text-gray-800 border border-gray-700", "placeholder":"Enter your Email Id"}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -33,8 +33,8 @@ class RegisterationForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-        'class':'w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700'
+        'class':'w-[90%] px-2 py-2 rounded-lg bg-gray-200 text-gray-800 border border-black'
     }),label="Enter your email")
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        "class":"w-[90%] px-2 py-2 rounded-lg bg-gray-900 text-white border border-gray-700"
+        "class":"w-[90%] px-2 py-2 rounded-lg bg-gray-200 text-gray-800 border border-gray-700"
     }), label="Enter your password")

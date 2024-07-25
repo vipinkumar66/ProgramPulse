@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
 {% block content %}
-<div class="flex h-[33rem] w-[80%] justify-between items-center text-center bg-gray-900 rounded-lg mt-10 p-2">
-    <div class="flex flex-col justify-center bg-indigo-950 w-[50%] h-[100%] rounded-lg items-center">
+<div class="flex h-[33rem] w-[80%] justify-between items-center text-center bg-gray-300 rounded-lg mt-10 p-2">
+    <div class="flex flex-col justify-center bg-gray-800 w-[50%] h-[100%] rounded-lg items-center">
         <div class="flex flex-col w-[60%] space-y-2">
             <h1 class="text-4xl font-bold text-white">Join Our Community</h1>
             <p class="text-gray-400 text-start italic font-semibold">We're excited to have you here. By joining our community, you'll gain access to exclusive content, insightful articles. Sign up now to start exploring.</p>
@@ -13,19 +13,19 @@
             {% csrf_token %}
             {% for field in form %}
             <div class="flex  justify-between text-start items-center w-[90%]">
-                <p class="text-gray-400 items-start font-semibold">{{ field.label }}</p>
+                <p class="text-gray-700 items-start font-semibold">{{ field.label }}</p>
                 {% if field.field.required %}
-                <span class="text-lg text-red-300 font-extrabold items-end mr-4">*</span>
+                <span class="text-lg text-red-500 font-extrabold items-end mr-4">*</span>
                 {% endif %}
             </div>
             <!-- <p class="border border-gray-400 w-[60%]">{{ field }}</p -->
                 {{ field }}
             {% if field.help_text %}
-            <p class="text-md italic text-gray-500 w-[90%] mb-10 ">{{field.help_text}}</p>
+            <p class="text-md italic text-gray-600 w-[90%] mb-10 ">{{field.help_text}}</p>
             {% endif %}
             {% endfor %}
             <!-- {{form.as_p}} -->
-            <p class="text-sm font-semibold text-gray-400 mt-2 mb-2">Already have an account <a href="{%url 'login' %}" class="text-indigo-700 font-semibold">Login here</a></p>
+            <p class="text-sm font-semibold text-gray-700 mt-2 mb-2">Already have an account <a href="{%url 'login' %}" class="text-indigo-700 font-semibold">Login here</a></p>
             <button type="submit" class="text-gray-300 bg-indigo-700 px-2 py-2 rounded-lg w-[35%]">Register</button>
 
         </form>
