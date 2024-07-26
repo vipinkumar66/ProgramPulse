@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from ckeditor_uploader.fields import RichTextUploadingField
+import re
+
 
 user = get_user_model()
 
@@ -41,6 +43,3 @@ class Comments(models.Model):
     def __str__(self):
         return f"Comment by {self.user.username} on {self.article.title}"
 
-class ArticleImage(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_images")
-    image = models.ImageField(upload_to="blogimages/")

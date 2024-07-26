@@ -123,5 +123,6 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join([
             'uploadimage',  # Add this plugin for image uploads
         ]),
+        'image2_alignClasses': ['align-left', 'align-center', 'align-right'],
     },
 }
