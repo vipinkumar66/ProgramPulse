@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block content %}
+    <div class="flex flex-col items-center justify-center">
+        {% for article in all_articles%}
+        <div class="flex w-[60%] h-[13rem]  mb-10">
+            <div class="border border-1 rounded-lg px-4 py-3 shadow-lg  w-[70%]">
+                <h1 class="font-semibold text-2xl mb-1">{{article.title}}</h1>
+                <div class="flex space-x-5 text-start mb-4">
+                    <p class="font-semibold text-gray-800 italic">{{article.author}}</p>
+                    <p class="font-semibold text-gray-700 italic">{{article.posteddate}}</p>
+                </div>
+                <p class="text-sm italic font-semibold text-gray-700">{{article.content|safe}}</p>
+            </div>
+            <img src={{article.img}} alt="" class="w-[30%] h-[13rem] object-cover">
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

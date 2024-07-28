@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from ckeditor_uploader.fields import RichTextUploadingField
-import re
-
+from django.utils.text import Truncator
 
 user = get_user_model()
 
@@ -28,6 +27,9 @@ class Article(models.Model):
     total_comments = models.IntegerField(default=0)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, related_name="categories")
+
+    def truncated_content(self):
+        return Truncator(self.content).words(50, truncate="...")
 
     def __str__(self):
         return self.title
